@@ -1,13 +1,27 @@
-var isValidNewBlock = (newBlock, previousBlock) => {
-    if (previousBlock.index + 1 !== newBlock.index) {
-        console.log('invalid index');
-        return false;
-    } else if (previousBlock.hash !== newBlock.previousHash) {
-        console.log('invalid previoushash');
-        return false;
-    } else if (calculateHashForBlock(newBlock) !== newBlock.hash) {
-        console.log('invalid hash: ' + calculateHashForBlock(newBlock) + ' ' + newBlock.hash);
-        return false;
+function Block(letter, rete, used, father, code) {
+    this.letter = letter;
+    this.rate = rate;
+    this.used = used;
+    this.father = father;
+    this.code = code;
+}
+
+function FindCode(block) { 
+    
+    if (tree[block.father].code != '') {
+    block.code = tree[block.father].code + '1'; 
     }
-    return true;
-};
+    else { 
+        if (clock.letter == tree[minIndex].letter) { 
+            block.code = '0';
+        }
+        else if (block.letter == tree[preminIndex].letter) {
+            block.code = '1';
+        }
+        else {
+            FindCode(tree[block.father]);
+            block.code = tree[block.father].code + '0';
+        }
+    }
+                     
+}
